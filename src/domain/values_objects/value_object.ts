@@ -1,3 +1,5 @@
+import { isDeepStrictEqual } from 'util'
+
 interface ValueObjectProps {
   [index: string]: any
 }
@@ -14,8 +16,6 @@ export abstract class ValueObject<T extends ValueObjectProps> {
 
     if (values.props === undefined) return false
 
-    // is missing to check if props as the same proprieties as this.props
-    
-    return true
+    return isDeepStrictEqual(this.props, values)
   }
 }
